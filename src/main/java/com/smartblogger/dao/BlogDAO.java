@@ -27,7 +27,8 @@ public class BlogDAO {
 	public List<Blog> getBlogs() {
 		Session ses = HibernateUtil.currentSession();
 		try {
-			return ses.createCriteria(Blog.class).list();
+			List<Blog> bloglist = ses.createCriteria(Blog.class).list();
+			return bloglist;
 		} finally {
 			HibernateUtil.closeSession();
 		}

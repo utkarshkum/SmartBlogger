@@ -15,12 +15,12 @@ import javax.ws.rs.core.MediaType;
 import com.smartblogger.dao.UserDAO;
 import com.smartblogger.model.User;
 
-@Path("/user")
+@Path("/users")
 public class UserService {
 
 	UserDAO userData = new UserDAO();
 	
-	private static UserService singeton = new UserService();
+	/*private static UserService singeton = new UserService();
 		
 	private UserService() {
 		
@@ -28,7 +28,7 @@ public class UserService {
 	
 	public static UserService getInstance() {
 		return singeton;
-	}
+	}*/
 	
 	public UserDAO getUserData() {
 		return userData;

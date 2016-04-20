@@ -18,9 +18,10 @@ import com.smartblogger.model.Blog;
 @Path("/blogs")
 public class BlogService {
 	
-	private static BlogService singeton = new BlogService();
-	
 	private BlogDAO blogDao = new BlogDAO();
+
+	
+	/*private static BlogService singeton = new BlogService();
 	
 	private BlogService() {
 		
@@ -28,7 +29,7 @@ public class BlogService {
 	
 	public static BlogService getInstance() {
 		return singeton;
-	}
+	}*/
 	
 	public BlogDAO getBlogDao() {
 		return blogDao;

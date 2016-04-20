@@ -21,7 +21,7 @@
     	<property name="emailId"  column="EMAILID" />
         <property name="password" column="PASSWORD" /> 
             	
-    	<set name="blogs" cascade="save-update,delete,delete-orphan">
+    	<set name="blogs" cascade="save-update,delete,delete-orphan" lazy="false">
     		<key column="USER_ID" not-null="true"/>
     		<one-to-many class="com.smartblogger.model.Blog"/>
     	</set>   	
