@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>    
+    <class name="com.smartblogger.model.Blog" table="BLOG">
+    	<id name="blogId" column="BLOGID">
+    		<generator class="native"/>
+    	</id>    	
+    	<property name="title" column="TITLE" /> 
+    	<property name="content"  column="CONTENT" />
+        <property name="tag" column="TAG" /> 
+        <property name="postDate" column="POSTDATE" />       
+    </class>
+    
+     <class name="com.smartblogger.model.User" table="USER">    
+    	<id name="userId" column="USERID">
+    		<generator class="native"/>
+    	</id>    	   	
+    	<property name="name" column="NAME" /> 
+    	<property name="emailId"  column="EMAILID" />
+        <property name="password" column="PASSWORD" /> 
+            	
+    	<set name="blogs" cascade="save-update,delete,delete-orphan">
+    		<key column="USER_ID" not-null="true"/>
+    		<one-to-many class="com.smartblogger.model.Blog"/>
+    	</set>   	
+    </class>
+    
+</hibernate-mapping>
