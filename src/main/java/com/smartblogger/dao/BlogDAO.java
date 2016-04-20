@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 
 import com.smartblogger.model.Blog;
 import com.smartblogger.service.HibernateUtil;
+import org.hibernate.Query;
 
 public class BlogDAO {
 	public Blog getBlog(Integer id) {
@@ -18,6 +19,20 @@ public class BlogDAO {
 			crit.add(Restrictions.idEq(id));
 			Blog blog = (Blog)crit.uniqueResult();
 			return blog;
+		} finally {
+			HibernateUtil.closeSession();
+		}
+	}
+	
+	public List<Blog> getBlogsWithUserID(Integer userId) {
+		Session ses = HibernateUtil.currentSession();
+		try {
+			String queryString = "select user.blogs from User user where user.userId=:userid";
+			Query query = ses.createQuery(queryString);
+			query.setInteger("userid", userId);
+
+			List<Blog> bloglist = query.list();
+			return bloglist;
 		} finally {
 			HibernateUtil.closeSession();
 		}

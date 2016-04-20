@@ -48,6 +48,14 @@ public class BlogService {
 	}
 	
 	@GET
+	@Path("/user/{param}")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<Blog> getBlogWithUserID(@PathParam("param") Integer id) {
+		return blogDao.getBlogsWithUserID(id);
+		
+	}
+	
+	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<Blog> getBlogs() {
 		return blogDao.getBlogs();

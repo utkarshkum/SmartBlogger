@@ -3,6 +3,8 @@ package com.smartblogger.test;
 import static org.junit.Assert.*;
 
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -12,6 +14,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.smartblogger.dao.BlogDAO;
 import com.smartblogger.model.Blog;
 import com.smartblogger.model.User;
 
@@ -25,6 +28,21 @@ public class TestBlog {
 	public void tearDown() throws Exception {
 	}
 
+	@Test
+	public void testQuery() {
+		BlogDAO blogDAO = new BlogDAO();
+		
+		List<Blog> blogList = blogDAO.getBlogsWithUserID(1);
+		
+		Iterator itr = blogList.iterator();
+		
+		while (itr.hasNext()) {
+			Blog blog = (Blog) itr.next();
+			System.out.println(blog.toString());
+		}
+			
+	}
+	
 	@Test
 	public void testAssociation() {
 		SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
@@ -41,9 +59,9 @@ public class TestBlog {
 		blog1.setContent("Java is a object oriented language.");
 		
 		Blog blog2 = new Blog();
-		blog2.setTitle("Java");
-		blog2.setTag("object");
-		blog2.setContent("Java is a object oriented language.");
+		blog2.setTitle("Java2");
+		blog2.setTag("object2");
+		blog2.setContent("Java2 is a object oriented language.");
 		
 		user1.addBlog(blog1);
 		user1.addBlog(blog2);
