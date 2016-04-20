@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,6 +18,7 @@ import org.junit.Test;
 import com.smartblogger.dao.BlogDAO;
 import com.smartblogger.model.Blog;
 import com.smartblogger.model.User;
+import com.smartblogger.service.HibernateUtil;
 
 public class TestBlog {
 
@@ -28,6 +30,7 @@ public class TestBlog {
 	public void tearDown() throws Exception {
 	}
 
+	/*
 	@Test
 	public void testQuery() {
 		BlogDAO blogDAO = new BlogDAO();
@@ -39,10 +42,35 @@ public class TestBlog {
 		while (itr.hasNext()) {
 			Blog blog = (Blog) itr.next();
 			System.out.println(blog.toString());
+			System.out.println(blog.getUser().getName());
 		}
 			
 	}
-	
+	/**/
+	/*
+	@Test
+	public void testQuery2() {
+		BlogDAO blogDAO = new BlogDAO();
+		
+		Session ses = HibernateUtil.currentSession();
+		try {
+			String queryString = "from Blog";
+			Query query = ses.createQuery(queryString);
+
+			List<Blog> blogList = query.list();
+			Iterator itr = blogList.iterator();
+			
+			while (itr.hasNext()) {
+				Blog blog = (Blog) itr.next();
+				System.out.println(blog.toString());
+			}
+		} finally {
+			HibernateUtil.closeSession();
+		}		
+
+			
+	}/**/
+	/**/
 	@Test
 	public void testAssociation() {
 		SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
@@ -74,5 +102,5 @@ public class TestBlog {
 		transaction.commit();
 		session.close();
 	}
-
+	/**/
 }

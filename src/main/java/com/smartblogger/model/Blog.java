@@ -2,6 +2,9 @@ package com.smartblogger.model;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class Blog {
 	
 	private Integer blogId;
@@ -10,6 +13,15 @@ public class Blog {
 	private String tag;
 	private Timestamp postDate;
 	
+	@JsonManagedReference
+	private User user;
+	
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 	public Integer getBlogId() {
 		return blogId;
 	}
@@ -45,6 +57,7 @@ public class Blog {
 	@Override
 	public String toString() {
 		return "Blog [blogId=" + blogId + ", title=" + title + ", content="
-				+ content + ", tag=" + tag + ", postDate=" + postDate + "]";
+				+ content + ", tag=" + tag + ", postDate=" + postDate
+				+ ", user=" + user + "]";
 	}
 }

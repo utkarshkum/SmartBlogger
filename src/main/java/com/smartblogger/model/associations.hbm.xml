@@ -3,14 +3,17 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>    
-    <class name="com.smartblogger.model.Blog" table="BLOG">
+    <class name="com.smartblogger.model.Blog" table="BLOG" dynamic-update="true">
     	<id name="blogId" column="BLOGID">
     		<generator class="native"/>
     	</id>    	
     	<property name="title" column="TITLE" /> 
     	<property name="content"  column="CONTENT" />
         <property name="tag" column="TAG" /> 
-        <property name="postDate" column="POSTDATE" />       
+        <property name="postDate" column="POSTDATE" />
+        
+        <many-to-one name="user" class="com.smartblogger.model.User" column="USER_ID" not-null="true" lazy="false"/>
+                          
     </class>
     
      <class name="com.smartblogger.model.User" table="USER">    
@@ -21,10 +24,11 @@
     	<property name="emailId"  column="EMAILID" />
         <property name="password" column="PASSWORD" /> 
             	
-    	<set name="blogs" cascade="save-update,delete,delete-orphan" lazy="false">
+    	<set name="blogs" cascade="save-update" inverse="true" lazy="false" >
     		<key column="USER_ID" not-null="true"/>
     		<one-to-many class="com.smartblogger.model.Blog"/>
-    	</set>   	
+    	</set>  
+    	    		 	
     </class>
     
 </hibernate-mapping>

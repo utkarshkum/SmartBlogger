@@ -3,13 +3,17 @@ package com.smartblogger.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 public class User {
 	
 	private Integer userId;
 	private String name;
 	private String emailId;
 	private String password;
-
+	
+	@JsonBackReference
 	private Set<Blog> blogs;
 	
 	public Set<Blog> getBlogs() {
@@ -47,6 +51,8 @@ public class User {
 		if(blogs==null){
 			blogs= new HashSet<Blog>();
 		}
+		blog.setUser(this);
+
 		blogs.add(blog);
 	}
 	
