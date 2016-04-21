@@ -1,12 +1,5 @@
 package com.smartblogger.test;
 
-import static org.junit.Assert.*;
-
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,12 +8,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.smartblogger.dao.BlogDAO;
 import com.smartblogger.model.Blog;
 import com.smartblogger.model.User;
-import com.smartblogger.service.HibernateUtil;
 
-public class TestBlog {
+import junit.framework.TestCase;
+
+public class BlogTest extends TestCase {
 
 	@Before
 	public void setUp() throws Exception {
@@ -70,7 +63,7 @@ public class TestBlog {
 
 			
 	}/**/
-	/**/
+	/*
 	@Test
 	public void testAssociation() {
 		SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
@@ -103,4 +96,5 @@ public class TestBlog {
 		session.close();
 	}
 	/**/
+
 }
