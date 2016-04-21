@@ -1,12 +1,11 @@
 package com.smartblogger.test;
 
-import junit.framework.TestCase;
 
 import org.junit.After;
 import org.junit.Before;
 
 
-public class BlogTest extends TestCase {
+public class BlogTest {
 
 	@Before
 	public void setUp() throws Exception {
