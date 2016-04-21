@@ -1,17 +1,18 @@
 package com.smartblogger.test;
 
+//import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.Before;
-
+//import org.junit.After;
+//import org.junit.Before;
+//import org.junit.Test;
 
 public class BlogTest {
 
-	@Before
+//	@Before
 	public void setUp() throws Exception {
 	}
 
-	@After
+//	@After
 	public void tearDown() throws Exception {
 	}
 
@@ -88,5 +89,6 @@ public class BlogTest {
 		session.close();
 	}
 	/**/
+
 
 }
