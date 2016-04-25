@@ -18,7 +18,7 @@ $(document).ready(function() {
 var link = $("<a/>",{"href":"test.html",
         "text":data[index].title,"class":"blogtitle"
 });
-var body = $("<div/>",{"text":data[index].body,"class":"blogbody"
+var body = $("<div/>",{"text":data[index].content,"class":"blogbody"
 });
 var  date  = new Date(data[index].post_date),
     day   = date.getDate(),

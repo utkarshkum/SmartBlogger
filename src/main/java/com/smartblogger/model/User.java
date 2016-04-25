@@ -3,8 +3,9 @@ package com.smartblogger.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 
 public class User {
 	
@@ -13,7 +14,7 @@ public class User {
 	private String emailId;
 	private String password;
 	
-	@JsonBackReference
+	@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="blogId")
 	private Set<Blog> blogs;
 	
 	public Set<Blog> getBlogs() {

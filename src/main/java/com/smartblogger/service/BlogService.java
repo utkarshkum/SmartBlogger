@@ -14,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.smartblogger.dao.BlogDAO;
 import com.smartblogger.model.Blog;
+import com.smartblogger.model.User;
 
 @Path("/blogs")
 public class BlogService {
@@ -65,6 +66,12 @@ public class BlogService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void createBlog(Blog blog) {
+		
+		//TODO - Get the userid from the session.
+		User user = new User();
+		user.setUserId(1);
+		blog.setUser(user);
+		
 		blogDao.createBlog(blog);
 		
 	}

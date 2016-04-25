@@ -1,5 +1,14 @@
 package com.smartblogger.test;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.junit.Test;
+
+import com.smartblogger.model.Blog;
+import com.smartblogger.model.User;
+
 //import static org.junit.Assert.*;
 
 //import org.junit.After;
@@ -56,7 +65,7 @@ public class BlogTest {
 
 			
 	}/**/
-	/*
+	/**/
 	@Test
 	public void testAssociation() {
 		SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();

@@ -1,7 +1,15 @@
 <html>
    <head>
+   <head>
       <title>The jQuery Example</title>
-  
+      <script type = "text/javascript"  src = "/jquery/jquery-2.1.3.min.js"></script>
+		
+      <script type = "text/javascript">
+         $(document).ready(function(){
+            document.write("Hello, World!");
+         });
+      </script>		
+   </head>  
    </head>
 	<body>
 	    <h2>Jersey RESTful Web Application!</h2>
