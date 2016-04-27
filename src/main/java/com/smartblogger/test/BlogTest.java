@@ -65,7 +65,7 @@ public class BlogTest {
 
 			
 	}/**/
-	/**/
+	/*
 	@Test
 	public void testAssociation() {
 		SessionFactory sessionFactory=new Configuration().configure().buildSessionFactory();
